@@ -47,5 +47,4 @@ RUN apk add --no-cache --virtual build-deps \
 
 ADD . /charcha
 RUN python manage.py collectstatic --no-input
-RUN chmod +x ./init.sh
 RUN chmod +x ./wait-for-it.sh
