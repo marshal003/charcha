@@ -10,13 +10,9 @@ services:
         python manage.py migrate --no-input
         python manage.py makemigrations charcha --no-input
         gunicorn charcha.wsgi -b 0.0.0.0:8000
-    volumes:
-      - .:/charcha
     restart: always
     expose:
       - "8000"
-    links:
-      - postgredb:postgredb
     depends_on:
       - postgredb
     environment:
@@ -30,8 +26,6 @@ services:
     ports:
       - 80:80
       - 443:443
-    links:
-      - web:web
     depends_on:
       - web
     volumes:
